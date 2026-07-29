@@ -70,7 +70,7 @@ ul { list-style: none; }
 
 /* ========== SITE HEADER ========== */
 .site-header {
-  background: #2a2a2a;
+  background: url('/images/header-background.jpg') center center / cover no-repeat, #2a2a2a;
   padding: 16px 0;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
@@ -326,7 +326,7 @@ ul { list-style: none; }
 .about-card {
   max-width: 1100px;
   margin: 0 auto;
-  background: #3a3a3a;
+  background: url('/images/header-background.jpg') center center / cover no-repeat, #3a3a3a;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.28);
   display: grid;
