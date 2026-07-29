@@ -33,6 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/style.css">
 
 <style>
@@ -76,12 +77,28 @@
 </head>
 <body>
 
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-social">
+      <a href="https://www.facebook.com/wheatlandconst" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/wheatland_construction/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@wheatlandconstruction" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <div class="top-bar-contact">
+      <a href="tel:+13163227898"><i class="fa-solid fa-phone top-bar-icon"></i> (316) 322-7898</a>
+      <span class="top-bar-divider">|</span>
+      <a href="mailto:contact@wheatlandconstruction.com"><i class="fa-solid fa-envelope top-bar-icon"></i> contact@wheatlandconstruction.com</a>
+    </div>
+  </div>
+</div>
+
 <!-- HEADER -->
 <header class="site-header">
   <div class="header-inner">
     <div class="header-logo">
       <a href="/" aria-label="Wheatland Construction Home">
-        <img src="/images/logo-wheatland.png" alt="Wheatland Construction" width="110" height="110">
+        <img src="/images/logo-wheatland.png" alt="Wheatland Construction" width="100" height="auto">
       </a>
     </div>
     <div class="header-cta">
@@ -92,7 +109,7 @@
 
 <!-- NAVIGATION -->
 <nav class="main-nav" role="navigation" aria-label="Main navigation">
-  <div class="container">
+  <div class="nav-inner">
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
     <ul class="nav-list" role="list">
       <li><a href="/">Home</a></li>
