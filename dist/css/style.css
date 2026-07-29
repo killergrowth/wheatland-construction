@@ -72,7 +72,7 @@ ul { list-style: none; }
 /* ========== SITE HEADER ========== */
 .site-header {
   background: url('/images/header-background.jpg') center center / cover no-repeat, #2a2a2a;
-  padding: 14px 0 40px;
+  padding: 0 0 40px;
   position: relative;
   z-index: 201;
 }
@@ -88,6 +88,7 @@ ul { list-style: none; }
   position: relative;
   z-index: 202;
   margin-bottom: -100px;
+  margin-top: -50px;
 }
 .header-logo img {
   display: block;
