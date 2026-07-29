@@ -91,7 +91,7 @@ ul { list-style: none; }
 .header-logo {
   position: relative;
   z-index: 202;
-  margin-bottom: -100px;
+  margin-bottom: -40px;
   margin-top: -50px;
 }
 .header-logo img {
