@@ -1,7 +1,42 @@
-﻿{
-  "rating": null,
-  "userRatingCount": 0,
-  "reviews": [],
-  "_note": "Placeholder — need Google Places API key to fetch real reviews. Share link: https://share.google/aUvlrJyK53Mqm1tAy",
-  "_fetchedAt": null
+{
+  "rating": 4.6,
+  "userRatingCount": 40,
+  "fetchedAt": "2026-07-29T21:01:27.018Z",
+  "reviews": [
+    {
+      "author": "Amy Buchanan",
+      "rating": 5,
+      "relativeTime": "11 months ago",
+      "text": "We used Wheatland Construction for our kitchen remodel, installation of new front door and replacement of an iron rail with a wall by our basement stairs. They were excellent in communicating and always made sure we knew when deliveries would take place. Carl and James were always so kind and easy to work with. We highly recommend them and will use them again when we have our bathrooms remodeled. (Cabinets were painted by a different contractor and floors were done by Jabaras)",
+      "publishTime": "2025-08-10T03:05:45.977699827Z"
+    },
+    {
+      "author": "Ronald Thompson",
+      "rating": 5,
+      "relativeTime": "7 months ago",
+      "text": "We only left a 5 star review here because there wasn’t a 6 star option available.\n\nOwner Jonathan and Crew Coordinator Carl and their crew have done an exemplary job in all areas of our home remodeling project!\n\nAlong with fair pricing the workers have gone above board in fixing items at no additional charge, just to see that the job was done right!\n\nTheir communication, along with coordination on the timing of events of the various subs involved and their work, has been exceptional!\n\nWe would highly recommend them for all your remodeling or repair needs!\n\nSincerely,\nRon & Susie Thompson",
+      "publishTime": "2025-12-11T18:59:20.466182818Z"
+    },
+    {
+      "author": "Sally Chesser",
+      "rating": 5,
+      "relativeTime": "7 months ago",
+      "text": "Wheatland Construction built a new deck on the back of my house last fall.  The one I had was rickety and needed to be completely replaced.  I wanted a new one, same size and shape as the old one.  Wheatland took out all the support pieces and even replaced two posts that supported part of my porch roof.  The new deck is amazing!  The whole rebuilding took about four weeks, but Wheatland’s carpenter, James, and project manager, Carl, communicated with me every step of the way.  Jonathan came by two or three times to check with me and ask me how things were going.  Some delays were weather-related,  and some were because the concrete needed to cure.  In one case, some of the boards were not up to Wheatland’s standards and had to be replaced by the lumber company.   I am very happy with my new deck, and I recommend Wheatland Construction for any home project.",
+      "publishTime": "2025-12-13T00:06:53.749715942Z"
+    },
+    {
+      "author": "Steve Johnson",
+      "rating": 5,
+      "relativeTime": "4 years ago",
+      "text": "It was great working with the guys at Wheatland to build our house. They were respectful and courteous throughout the entire process, even when there were snags in materials and personnel due to covid. They were also professional, caring and trustworthy. We are very happy with our house, and glad we chose Wheatland.",
+      "publishTime": "2022-02-09T14:02:13.991361Z"
+    },
+    {
+      "author": "Karen",
+      "rating": 5,
+      "relativeTime": "a year ago",
+      "text": "Wheatland Construction came in to a horrendous mess left by someone else and left me my home again. The guys were very polite and professional, did more work in approximately 2-3 months than had been done in over 2 years. I have received numerous compliments on the work they have done. I am extremely happy with the results I have gotten and be using them for all my future projects!",
+      "publishTime": "2025-05-21T20:47:05.745575Z"
+    }
+  ]
 }

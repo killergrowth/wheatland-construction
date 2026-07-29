@@ -1,0 +1,56 @@
+name: Refresh Google Reviews
+
+on:
+  schedule:
+    - cron: '0 10 * * 0'  # Sunday 5am CDT (UTC-5)
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch reviews from Google Places
+        env:
+          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+        run: node scripts/fetch-reviews.js
+
+      - name: Check if reviews.json changed
+        id: diff
+        run: |
+          if git diff --quiet data/reviews.json 2>/dev/null; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No change — skipping deploy."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit updated reviews.json
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "KillerGrowth"
+          git config user.email "notifications@killergrowth.com"
+          git add data/reviews.json
+          git commit -m "chore: refresh Google reviews [auto]"
+          git push
+
+      - name: Build site
+        if: steps.diff.outputs.changed == 'true'
+        run: node build.js
+
+      - name: Deploy to Cloudflare Pages
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 27cafbbee6f8e1db0d9499405d4755c1
+        run: npx wrangler pages deploy ./dist --project-name wheatland-construction --branch main
