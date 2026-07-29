@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+{{page_meta}}
+{{base_head}}
+<style>
+.blog-index-hero { background: #2a2a2a; padding: 48px 20px 36px; }
+.blog-index-hero .container { max-width: 1200px; margin: 0 auto; }
+.blog-index-hero nav { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
+.blog-index-hero nav a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.blog-index-hero nav a:hover { color: #efa92c; }
+.blog-index-hero h1 { color: #fff; font-family: 'Barlow', sans-serif; font-size: clamp(1.4rem, 3vw, 2.1rem); font-weight: 800; margin: 0; }
+.blog-index-layout { max-width: 860px; margin: 0 auto; padding: 48px 20px 60px; }
+.kg-blog-card { display: flex; gap: 24px; padding: 28px 0; border-bottom: 1px solid #eee; align-items: flex-start; }
+.kg-blog-card img { width: 200px; height: 133px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+.kg-blog-card-body { flex: 1; min-width: 0; }
+.kg-blog-card-body h2 { font-family: 'Barlow', sans-serif; font-size: 1.2rem; font-weight: 700; margin: 0 0 8px; }
+.kg-blog-card-body h2 a { color: #2a2a2a; text-decoration: none; }
+.kg-blog-card-body h2 a:hover { color: #efa92c; }
+.kg-blog-card-date { font-size: 0.83rem; color: #888; margin-bottom: 10px; }
+.kg-blog-card-excerpt { margin: 0 0 12px; color: #555; font-size: 0.95rem; line-height: 1.5; }
+.kg-blog-card-body a.read-more { font-size: 0.9rem; font-weight: 600; color: #efa92c; text-decoration: none; }
+@media (max-width: 600px) { .kg-blog-card { flex-direction: column; } .kg-blog-card img { width: 100%; height: 200px; } }
+</style>
+</head>
+<body>
+{{header}}
+
+<div class="blog-index-hero">
+  <div class="container">
+    <nav aria-label="Breadcrumb">
+      <a href="/">Home</a> &rsaquo; <span style="color:#fff;">Blog</span>
+    </nav>
+    <h1>{{page_title}}</h1>
+  </div>
+</div>
+
+<div class="blog-index-layout">
+  {{posts_html}}
+  {{pagination_html}}
+</div>
+
+{{footer}}
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!-- PAGE HERO -->
+<section class="page-hero" style="background:#2a2a2a;padding:72px 20px 56px;text-align:center;">
+  <div class="container">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span>&rsaquo;</span> <span>Project Request</span>
+    </nav>
+    <h1 style="color:#fff;font-family:'Barlow',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;margin:0 0 16px;">Let&#8217;s Get Started</h1>
+    <p style="color:rgba(255,255,255,0.88);font-size:1.1rem;max-width:600px;margin:0 auto;">This is the first step in our collaboration. Tell us about your project and we&#8217;ll get back to you to set up a consultation.</p>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="section-padding" style="background:#f8f9fa;">
+  <div class="container">
+    <div style="max-width:720px;margin:0 auto;background:#fff;border-radius:8px;padding:48px 40px;box-shadow:0 2px 16px rgba(0,0,0,0.07);">
+      <h2 style="font-family:'Barlow',sans-serif;font-size:1.5rem;font-weight:800;color:#2a2a2a;margin-bottom:8px;">Project Request</h2>
+      <p style="color:#666;margin-bottom:32px;line-height:1.7;">To help us better understand your specific project, fill out the request form below. A member of our team will evaluate your request and reach out to set up a consultation. If you would rather talk with us, feel free to call at <a href="tel:+13163227898" style="color:#efa92c;font-weight:600;">(316) 322-7898</a>.</p>
+
+      <form action="/project-request/submit/" method="POST" class="project-form">
+
+        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <div class="form-group">
+            <label for="pr-name">Name <span style="color:#efa92c;">*</span></label>
+            <input type="text" id="pr-name" name="name" required autocomplete="name" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label for="pr-email">Email <span style="color:#efa92c;">*</span></label>
+            <input type="email" id="pr-email" name="email" required autocomplete="email" placeholder="your@email.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="pr-phone">Phone <span style="color:#efa92c;">*</span></label>
+          <input type="tel" id="pr-phone" name="phone" required autocomplete="tel" placeholder="(316) 555-0000">
+        </div>
+
+        <div class="form-group">
+          <label for="pr-address">Project Address <span style="color:#efa92c;">*</span></label>
+          <input type="text" id="pr-address" name="address" required autocomplete="street-address" placeholder="Street address">
+        </div>
+
+        <div class="form-row" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px;">
+          <div class="form-group">
+            <label for="pr-city">City <span style="color:#efa92c;">*</span></label>
+            <input type="text" id="pr-city" name="city" required autocomplete="address-level2" placeholder="City">
+          </div>
+          <div class="form-group">
+            <label for="pr-state">State</label>
+            <input type="text" id="pr-state" name="state" value="KS" readonly style="background:#f4f4f4;color:#888;">
+          </div>
+          <div class="form-group">
+            <label for="pr-zip">Zip Code <span style="color:#efa92c;">*</span></label>
+            <input type="text" id="pr-zip" name="zip" required autocomplete="postal-code" placeholder="67042">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="pr-type">Project Type <span style="color:#efa92c;">*</span></label>
+          <select id="pr-type" name="project_type" required>
+            <option value="">&#8212;Please choose an option&#8212;</option>
+            <option value="custom-home">Custom Home</option>
+            <option value="major-remodel">Major Remodel</option>
+            <option value="addition">Addition</option>
+            <option value="roofing">Roofing</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="pr-budget">Estimated Budget <span style="color:#efa92c;">*</span></label>
+          <select id="pr-budget" name="budget" required>
+            <option value="">&#8212;Please choose an option&#8212;</option>
+            <option value="0-50k">$0 &ndash; $50k</option>
+            <option value="50k-100k">$50k &ndash; $100k</option>
+            <option value="100k-250k">$100k &ndash; $250k</option>
+            <option value="250k-500k">$250k &ndash; $500k</option>
+            <option value="500k-1m">$500k &ndash; $1M</option>
+            <option value="1m+">$1M+</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="pr-timeline">When would you like to begin construction? <span style="color:#efa92c;">*</span></label>
+          <select id="pr-timeline" name="timeline" required>
+            <option value="">&#8212;Please choose an option&#8212;</option>
+            <option value="asap">ASAP</option>
+            <option value="0-3mo">0 &ndash; 3 months</option>
+            <option value="3-6mo">3 &ndash; 6 months</option>
+            <option value="6-12mo">6 &ndash; 12 months</option>
+            <option value="12mo+">12+ months</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="pr-desc">Brief description of the overall work <span style="color:#efa92c;">*</span></label>
+          <textarea id="pr-desc" name="description" rows="5" required placeholder="Tell us about your project goals, scope, and any specific details we should know"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="pr-source">How did you hear about us?</label>
+          <select id="pr-source" name="how_heard">
+            <option value="">&#8212;Please choose an option&#8212;</option>
+            <option value="google">Google / Search</option>
+            <option value="referral">Referral</option>
+            <option value="social">Social Media</option>
+            <option value="repeat">Repeat Client</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div id="cf-turnstile-pr" class="cf-turnstile" data-sitekey="0x4AAAAAAA_placeholder_pr" data-theme="light" style="margin-bottom:20px;"></div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;padding:16px;font-size:1.05rem;font-weight:700;">Submit Project Request</button>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+@media (max-width: 600px) {
+  .form-row { grid-template-columns: 1fr !important; }
+}
+.project-form .form-group { margin-bottom: 20px; }
+.project-form label { display: block; font-size: 0.88rem; font-weight: 600; color: #2a2a2a; margin-bottom: 6px; }
+.project-form input, .project-form select, .project-form textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid #d0d0d0; border-radius: 4px;
+  font-size: 0.95rem; font-family: 'Roboto', sans-serif; color: #333;
+  background: #fff; box-sizing: border-box;
+}
+.project-form input:focus, .project-form select:focus, .project-form textarea:focus {
+  outline: none; border-color: #efa92c; box-shadow: 0 0 0 3px rgba(239,169,44,0.12);
+}
+.project-form textarea { resize: vertical; }
+</style>

@@ -1,0 +1,21 @@
+{
+  "siteId": "wheatland-construction",
+  "siteName": "Wheatland Construction",
+  "currentStep": 7,
+  "lastUpdated": "2026-07-29T21:30:00.000Z",
+  "status": "staging-deployed",
+  "stagingUrl": "https://staging.wheatland-construction.pages.dev",
+  "notes": [
+    "Custom site build (not PKG001/PKG002 — manual build)",
+    "66 blog posts built (33 from KG builder April 6+, 33 from pre-April 6 WP scrape via REST API)",
+    "Reviews section: placeholder — needs Google Places API key to fetch live reviews",
+    "Forms: Gmail API via SA+DWD — needs TURNSTILE_SECRET_KEY + GOOGLE_SA_KEY_JSON + NOTIFY_EMAIL secrets in CF Pages",
+    "Turnstile site keys: placeholder in HTML — need real keys created in CF dashboard"
+  ],
+  "pendingItems": [
+    "Set CF Pages secrets: TURNSTILE_SECRET_KEY, GOOGLE_SA_KEY_JSON, NOTIFY_EMAIL",
+    "Create Turnstile site key + update data-sitekey in contact.html and project-request.html",
+    "Google Places API key for reviews fetch",
+    "Tyler N review and approval before live deploy"
+  ]
+}

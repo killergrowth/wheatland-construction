@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+{{page_meta}}
+{{base_head}}
+<style>
+/* === Wheatland Blog Post Styles === */
+.blog-post-hero-bar { background: #2a2a2a; padding: 48px 20px 36px; }
+.blog-post-hero-bar .container { max-width: 1200px; margin: 0 auto; }
+.blog-breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
+.blog-breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.blog-breadcrumb a:hover { color: #efa92c; }
+.blog-breadcrumb span { color: #fff; }
+.blog-post-hero-bar h1 { color: #fff; font-family: 'Barlow', sans-serif; font-size: clamp(1.4rem, 3vw, 2.1rem); font-weight: 800; line-height: 1.25; max-width: 800px; margin: 0; }
+.blog-post-layout { max-width: 860px; margin: 0 auto; padding: 48px 20px 60px; }
+.kg-post-hero { width: 100%; max-height: 460px; object-fit: cover; border-radius: 6px; margin-bottom: 28px; }
+.kg-post-meta { font-size: 0.88rem; color: #888; margin-bottom: 24px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 16px; }
+.kg-post-meta span { display: flex; align-items: center; gap: 6px; }
+.kg-post-body { color: #333; font-size: 16px; line-height: 1.8; font-family: 'Roboto', sans-serif; }
+.kg-post-body h1, .kg-post-body h2 { color: #2a2a2a; font-family: 'Barlow', sans-serif; font-size: 22px; font-weight: 700; margin: 32px 0 14px; }
+.kg-post-body h3 { color: #2a2a2a; font-family: 'Barlow', sans-serif; font-size: 18px; font-weight: 700; margin: 24px 0 10px; }
+.kg-post-body p { margin: 0 0 18px; }
+.kg-post-body ul, .kg-post-body ol { margin: 0 0 18px 24px; }
+.kg-post-body li { margin-bottom: 8px; line-height: 1.7; }
+.kg-post-body p > img { float: right; max-width: 42%; height: auto; border-radius: 6px; margin: 4px 0 24px 32px; }
+.kg-post-body h2, .kg-post-body h3 { clear: both; }
+.kg-post-body a { color: #efa92c; }
+.kg-post-body strong { color: #222; }
+.kg-post-body blockquote { border-left: 4px solid #efa92c; background: rgba(239,169,44,0.07); padding: 16px 20px; margin: 24px 0; color: #444; }
+.kg-post-body hr { border: none; border-top: 1px dashed #ddd; margin: 28px 0; }
+@media (max-width: 600px) { .kg-post-body p > img { float: none; max-width: 100%; margin: 16px 0; display: block; } }
+.kg-cta-box { background: #2a2a2a; color: #fff; border-radius: 6px; padding: 28px 32px; margin-top: 40px; }
+.kg-cta-box h4 { margin: 0 0 10px; font-size: 20px; font-family: 'Barlow', sans-serif; color: #fff; }
+.kg-cta-box p { margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.85); }
+.kg-cta-box a { color: #efa92c; font-weight: 700; }
+.kg-post-back { margin-top: 32px; padding-top: 20px; border-top: 1px solid #eee; }
+.kg-post-back a { color: #efa92c; font-weight: 600; text-decoration: none; }
+</style>
+</head>
+<body>
+{{header}}
+
+<div class="blog-post-hero-bar">
+  <div class="container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; <span>{{title}}</span>
+    </nav>
+    <h1>{{title}}</h1>
+  </div>
+</div>
+
+<div class="blog-post-layout">
+  {{featured_image_html}}
+  <div class="kg-post-meta">
+    {{date_html}}
+    {{author_html}}
+  </div>
+  <div class="kg-post-body">
+    {{content}}
+  </div>
+  <div class="kg-cta-box">
+    <h4>Ready to Start Your Project?</h4>
+    <p>Wheatland Construction serves Butler &amp; Sedgwick County, KS. Call <a href="tel:+13163227898">(316) 322-7898</a> or <a href="/project-request/">submit a project request online</a>.</p>
+  </div>
+  <div class="kg-post-back">
+    <a href="/blog/">&larr; Back to Blog</a>
+  </div>
+</div>
+
+{{footer}}
+</body>
+</html>
