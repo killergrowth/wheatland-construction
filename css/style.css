@@ -57,9 +57,10 @@ ul { list-style: none; }
 .top-bar-social { display: flex; gap: 14px; }
 .top-bar-social a {
   color: #aaa;
-  font-family: 'Font Awesome 5 Free', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   transition: color 0.2s;
+  display: flex;
+  align-items: center;
 }
 .top-bar-social a:hover { color: #efa92c; }
 .top-bar-contact { display: flex; align-items: center; gap: 10px; }
@@ -86,7 +87,7 @@ ul { list-style: none; }
 .header-logo {
   position: relative;
   z-index: 202;
-  margin-bottom: -70px;
+  margin-bottom: -100px;
 }
 .header-logo img {
   display: block;
@@ -120,7 +121,7 @@ ul { list-style: none; }
 .nav-inner {
   max-width: 820px;
   margin: 0 auto;
-  background: rgba(50,50,50,0.92);
+  background: #3a3a3a;
   border-radius: 6px 6px 10px 10px;
   display: flex;
   align-items: center;
