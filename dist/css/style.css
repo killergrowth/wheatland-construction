@@ -81,8 +81,12 @@ ul { list-style: none; }
   margin: 0 auto;
   padding: 0 32px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
+  padding-bottom: 10px;
+}
+.header-cta {
+  margin-top: 30px;
 }
 .header-logo {
   position: relative;
