@@ -23,9 +23,19 @@ document.addEventListener('DOMContentLoaded', function() {
   const overlay = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   if (overlay && lightboxImg) {
-    document.querySelectorAll('.gallery-grid img, .gallery-lightbox').forEach(function(img) {
-      img.addEventListener('click', function() {
-        lightboxImg.src = this.src.replace(/-\d+x\d+\./, '.').replace('-scaled', '');
+    document.querySelectorAll('.gallery-item').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var img = this.querySelector('img');
+        lightboxImg.src = this.href || (img && img.src) || '';
+        overlay.classList.add('active');
+      });
+    });
+    // legacy: also handle bare img clicks outside anchor wrappers
+    document.querySelectorAll('.gallery-grid img:not(.gallery-item img), .gallery-lightbox').forEach(function(img) {
+      img.addEventListener('click', function(e) {
+        e.preventDefault();
+        lightboxImg.src = this.src;
         overlay.classList.add('active');
       });
     });

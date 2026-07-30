@@ -234,6 +234,43 @@ write('index.html', buildPage({
   content:  read(path.join(ROOT, 'index.html'))
 }));
 
+// ─── Service Cities List (for areas-served sections) ────────────────────────────────────────
+
+const TARGET_CITIES = [
+  { name: 'Wichita',       slug: 'wichita-ks' },
+  { name: 'Andover',       slug: 'andover-ks' },
+  { name: 'Derby',         slug: 'derby-ks' },
+  { name: 'Augusta',       slug: 'augusta-ks' },
+  { name: 'El Dorado',     slug: 'el-dorado-ks' },
+  { name: 'Goddard',       slug: 'goddard-ks' },
+  { name: 'Haysville',     slug: 'haysville-ks' },
+  { name: 'Maize',         slug: 'maize-ks' },
+  { name: 'Valley Center', slug: 'valley-center-ks' },
+  { name: 'Park City',     slug: 'park-city-ks' },
+  { name: 'Bel Aire',      slug: 'bel-aire-ks' },
+  { name: 'Cheney',        slug: 'cheney-ks' },
+  { name: 'Mulvane',       slug: 'mulvane-ks' },
+  { name: 'Rose Hill',     slug: 'rose-hill-ks' },
+  { name: 'Benton',        slug: 'benton-ks' },
+  { name: 'Towanda',       slug: 'towanda-ks' },
+  { name: 'Leon',          slug: 'leon-ks' },
+  { name: 'Eastborough',   slug: 'eastborough-ks' }
+];
+
+function buildAreasSection(urlPrefix, serviceLabel) {
+  const links = TARGET_CITIES.map(c =>
+    `<a href="/${urlPrefix}/${c.slug}/" class="area-link">${escHtml(c.name)}, KS</a>`
+  ).join('\n      ');
+  return `\n<!-- AREAS SERVED -->\n<section class="section-padding" style="background:#f8f9fa;">\n  <div class="container" style="max-width:900px;">\n    <h2 class="section-title">Cities We Serve</h2>\n    <p style="color:#555;margin-bottom:24px;">Wheatland Construction provides ${escHtml(serviceLabel)} services throughout the greater Wichita metro and surrounding communities in Butler and Sedgwick counties.</p>\n    <div class="areas-grid">\n      ${links}\n    </div>\n  </div>\n</section>\n`;
+}
+
+function withAreasSection(content, urlPrefix, serviceLabel) {
+  const areasHtml = buildAreasSection(urlPrefix, serviceLabel);
+  return content.includes('<div class="cta-float-wrap">')
+    ? content.replace('<div class="cta-float-wrap">', areasHtml + '<div class="cta-float-wrap">')
+    : content + areasHtml;
+}
+
 // Custom Homes
 write('custom-homes/index.html', buildPage({
   title:    'Custom Home Builder in El Dorado & Wichita, KS | Wheatland Construction',
@@ -241,7 +278,7 @@ write('custom-homes/index.html', buildPage({
   canonical: 'https://' + DOMAIN + '/custom-homes/',
   ogImage:  'https://' + DOMAIN + '/images/customhome-hero.jpg',
   schema:   breadcrumbSchema('Custom Homes', 'https://' + DOMAIN + '/custom-homes/'),
-  content:  read(path.join(ROOT, 'custom-homes.html'))
+  content:  withAreasSection(read(path.join(ROOT, 'custom-homes.html')), 'custom-home-building', 'custom home building')
 }));
 
 // Additions
@@ -251,7 +288,7 @@ write('additions/index.html', buildPage({
   canonical: 'https://' + DOMAIN + '/additions/',
   ogImage:  'https://' + DOMAIN + '/images/addition.jpg',
   schema:   breadcrumbSchema('Additions', 'https://' + DOMAIN + '/additions/'),
-  content:  read(path.join(ROOT, 'additions.html'))
+  content:  withAreasSection(read(path.join(ROOT, 'additions.html')), 'home-additions', 'home additions')
 }));
 
 // Major Remodels
@@ -261,7 +298,7 @@ write('major-remodels/index.html', buildPage({
   canonical: 'https://' + DOMAIN + '/major-remodels/',
   ogImage:  'https://' + DOMAIN + '/images/major-remodel-hero.jpg',
   schema:   breadcrumbSchema('Major Remodels', 'https://' + DOMAIN + '/major-remodels/'),
-  content:  read(path.join(ROOT, 'major-remodels.html'))
+  content:  withAreasSection(read(path.join(ROOT, 'major-remodels.html')), 'major-remodels', 'major remodels')
 }));
 
 // Roofing
@@ -271,7 +308,7 @@ write('roofing/index.html', buildPage({
   canonical: 'https://' + DOMAIN + '/roofing/',
   ogImage:  'https://' + DOMAIN + '/images/standing-seam-roof.jpg',
   schema:   breadcrumbSchema('Roofing', 'https://' + DOMAIN + '/roofing/'),
-  content:  read(path.join(ROOT, 'roofing.html'))
+  content:  withAreasSection(read(path.join(ROOT, 'roofing.html')), 'roofing', 'roofing')
 }));
 
 // Contact

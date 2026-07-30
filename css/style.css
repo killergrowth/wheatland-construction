@@ -1082,3 +1082,27 @@ footer {
 }
 .page-breadcrumb a:hover { color: #efa92c; }
 .page-breadcrumb span { color: #fff; }
+
+/* ── Areas Grid (location page city links) ─────────────────── */
+.areas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin-top: 8px;
+}
+.area-link {
+  display: inline-block;
+  background: #fff;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  color: #333;
+  text-decoration: none;
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+}
+.area-link:hover {
+  border-color: #efa92c;
+  color: #b47400;
+  background: #fffbf0;
+}

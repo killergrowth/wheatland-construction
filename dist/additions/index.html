@@ -125,22 +125,66 @@
 </section>
 
 <!-- TESTIMONIAL -->
-<section class="section-padding" style="background:#2a2a2a;">
-  <div class="container" style="max-width:800px;text-align:center;">
-    <p style="font-size:1.15rem;color:#fff;font-style:italic;line-height:1.75;margin-bottom:20px;">&#8220;Wheatland Construction is great to work with! I highly recommend them for any project. They were very responsive in resolving any issues that occurred during the construction process. We are very happy with our new deck and the look surpassed our expectations. Thank you, Wheatland Construction!&#8221;</p>
-    <p style="color:#efa92c;font-weight:700;font-family:'Barlow',sans-serif;font-size:1rem;letter-spacing:1px;">&#8212; Jennifer G.</p>
+<section class="service-testimonial" id="service-review-section">
+  <div class="container" style="max-width:820px;">
+    <hr class="testimonial-rule">
+    <blockquote class="service-testimonial-quote" id="service-review-text">Loading review&hellip;</blockquote>
+    <p class="service-testimonial-author" id="service-review-author"></p>
+    <hr class="testimonial-rule">
   </div>
 </section>
+<script>
+(function(){
+  fetch("/data/reviews.json")
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var reviews = (d.reviews || []).filter(function(r){ return r.text && r.text.length > 40; });
+      if(!reviews.length) return;
+      var r = reviews[Math.floor(Math.random() * reviews.length)];
+      document.getElementById("service-review-text").innerHTML = "\u201C" + r.text + "\u201D";
+      document.getElementById("service-review-author").textContent = r.author;
+    })
+    .catch(function(){});
+})();
+</script>
 
 <!-- CTA BAND -->
-<section class="cta-band">
-  <div class="container">
-    <h2>Let&#8217;s Work Together</h2>
-    <p>Ready to work with Wheatland Construction on your next project?<br>Tell us more about your project by clicking the button below, or give us a call.</p>
-    <a href="/project-request/" class="btn btn-dark">Let&#8217;s Get Started</a>
-    <p class="call-line">Or Call: <a href="tel:+13163227898">(316) 322-7898</a></p>
+
+<!-- AREAS SERVED -->
+<section class="section-padding" style="background:#f8f9fa;">
+  <div class="container" style="max-width:900px;">
+    <h2 class="section-title">Cities We Serve</h2>
+    <p style="color:#555;margin-bottom:24px;">Wheatland Construction provides home additions services throughout the greater Wichita metro and surrounding communities in Butler and Sedgwick counties.</p>
+    <div class="areas-grid">
+      <a href="/home-additions/wichita-ks/" class="area-link">Wichita, KS</a>
+      <a href="/home-additions/andover-ks/" class="area-link">Andover, KS</a>
+      <a href="/home-additions/derby-ks/" class="area-link">Derby, KS</a>
+      <a href="/home-additions/augusta-ks/" class="area-link">Augusta, KS</a>
+      <a href="/home-additions/el-dorado-ks/" class="area-link">El Dorado, KS</a>
+      <a href="/home-additions/goddard-ks/" class="area-link">Goddard, KS</a>
+      <a href="/home-additions/haysville-ks/" class="area-link">Haysville, KS</a>
+      <a href="/home-additions/maize-ks/" class="area-link">Maize, KS</a>
+      <a href="/home-additions/valley-center-ks/" class="area-link">Valley Center, KS</a>
+      <a href="/home-additions/park-city-ks/" class="area-link">Park City, KS</a>
+      <a href="/home-additions/bel-aire-ks/" class="area-link">Bel Aire, KS</a>
+      <a href="/home-additions/cheney-ks/" class="area-link">Cheney, KS</a>
+      <a href="/home-additions/mulvane-ks/" class="area-link">Mulvane, KS</a>
+      <a href="/home-additions/rose-hill-ks/" class="area-link">Rose Hill, KS</a>
+      <a href="/home-additions/benton-ks/" class="area-link">Benton, KS</a>
+      <a href="/home-additions/towanda-ks/" class="area-link">Towanda, KS</a>
+      <a href="/home-additions/leon-ks/" class="area-link">Leon, KS</a>
+      <a href="/home-additions/eastborough-ks/" class="area-link">Eastborough, KS</a>
+    </div>
   </div>
 </section>
+<div class="cta-float-wrap">
+  <div class="cta-card">
+    <h2>Let&#8217;s Work Together</h2>
+    <p>Ready to work with Wheatland Construction on your next project?<br>Tell us more about your project by clicking the button below, or give us a call.</p>
+    <a href="/project-request/" class="btn btn-cta-dark">Let&#8217;s Get Started</a>
+    <p class="call-line">Or Call: <a href="tel:+13163227898">(316) 322-7898</a></p>
+  </div>
+</div>
 
 
 <!-- LIGHTBOX -->
@@ -163,7 +207,7 @@
   <a href="#" class="back-to-top" aria-label="Back to top">&#8679;</a>
 </footer>
 
-<script src="/js/main.js"></script>
+<script src="/js/main.js?v=3"></script>
 <script src="/js/reviews-carousel.js"></script>
 <!-- INJECT_SCRIPTS_BODY -->
 </body>
