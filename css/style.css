@@ -162,6 +162,17 @@ ul { list-style: none; }
 }
 /* Dropdown */
 .nav-list .has-dropdown { position: relative; }
+.nav-chevron {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  margin-left: 4px;
+  opacity: 0.8;
+  vertical-align: middle;
+}
 .nav-list .dropdown {
   display: none;
   position: absolute;
