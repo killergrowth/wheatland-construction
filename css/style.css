@@ -431,21 +431,29 @@ ul { list-style: none; }
 /* ========== PROCESS ========== */
 .process-section { background: #f8f9fa; }
 .process-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   margin-top: 40px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .process-card {
   background: #fff;
   border-radius: 6px;
-  padding: 28px 24px;
+  padding: 28px 32px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  text-align: center;
-  border-top: 3px solid #efa92c;
+  text-align: left;
+  border-left: 4px solid #efa92c;
+  border-top: none;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
 }
 .process-card .step-num {
   width: 48px; height: 48px;
+  min-width: 48px;
   background: #efa92c;
   color: #fff;
   border-radius: 50%;
@@ -453,10 +461,11 @@ ul { list-style: none; }
   font-family: 'Barlow', sans-serif;
   font-weight: 800;
   font-size: 18px;
-  margin: 0 auto 16px;
+  flex-shrink: 0;
 }
-.process-card h3 { font-size: 16px; margin-bottom: 10px; color: #2a2a2a; }
-.process-card p { color: #666; font-size: 14px; line-height: 1.7; }
+.process-card-body { flex: 1; }
+.process-card h3 { font-size: 16px; margin-bottom: 8px; color: #2a2a2a; }
+.process-card p { color: #666; font-size: 14px; line-height: 1.7; margin: 0; }
 
 /* ========== STAFF ========== */
 .staff-section {
