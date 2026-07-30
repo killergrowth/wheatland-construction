@@ -978,7 +978,7 @@ footer {
   .main-nav { margin-top: -44px; }
   .nav-list { display: none; }
   .nav-toggle { display: block; }
-  .nav-inner { justify-content: space-between; border-radius: 0; }
+  .nav-inner { justify-content: flex-end; border-radius: 0; }
   .nav-list.open {
     display: flex;
     flex-direction: column;
@@ -999,10 +999,23 @@ footer {
   .about-card-right { padding: 36px 28px; }
 }
 @media (max-width: 600px) {
-  .top-bar-inner { padding: 0 16px; flex-direction: column; gap: 6px; }
-  .top-bar-contact { flex-wrap: wrap; justify-content: center; gap: 6px; }
-  .header-inner { padding: 0 16px; }
-  .header-logo img { width: 70px; }
+  /* Top bar: hide email, keep socials left + phone right */
+  .top-bar-inner { padding: 0 16px; flex-direction: row; gap: 0; }
+  .top-bar-contact .top-bar-divider,
+  .top-bar-contact a[href^="mailto"] { display: none; }
+  .top-bar-contact { gap: 6px; }
+
+  /* Header: compact, hide CTA button */
+  .site-header { padding: 0 0 0; }
+  .header-inner { padding: 8px 16px; align-items: center; }
+  .header-logo { margin-bottom: 0; margin-top: 0; }
+  .header-logo img { width: 80px; }
+  .header-cta { display: none; }
+
+  /* Nav: no negative margin overlap, hamburger + logo side-by-side feel */
+  .main-nav { margin-top: 0; padding: 0; }
+  .nav-inner { transform: none; border-radius: 0; padding: 0 16px; }
+
   .btn-amber { padding: 10px 18px; font-size: 13px; }
   .hero { min-height: 420px; padding-bottom: 80px; }
   .hero-content { padding: 40px 20px; }
