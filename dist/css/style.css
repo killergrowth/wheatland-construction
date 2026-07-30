@@ -701,7 +701,7 @@ ul { list-style: none; }
   padding: 0 24px;
 }
 .cta-card {
-  background: #efa92c url('/images/cta-background.jpg') center center / cover no-repeat;
+  background: url('/images/cta-background.jpg') center center / cover no-repeat;
   border-radius: 16px;
   padding: 56px 60px 48px;
   text-align: center;
@@ -711,14 +711,7 @@ ul { list-style: none; }
   position: relative;
   overflow: hidden;
 }
-.cta-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(239,169,44,0.15);
-  pointer-events: none;
-  border-radius: 16px;
-}
+.cta-card::before { display: none; }
 .cta-card > * { position: relative; z-index: 1; }
 .cta-card h2 { color: #fff; font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 12px; }
 .cta-card p { color: rgba(255,255,255,0.92); font-size: 16px; margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
