@@ -463,13 +463,6 @@ ul { list-style: none; }
   background: url('/images/header-background.jpg') center center / cover no-repeat;
   position: relative;
 }
-.staff-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(20,14,8,0.82);
-  pointer-events: none;
-}
 .staff-section > * { position: relative; z-index: 1; }
 .staff-section .container { position: relative; z-index: 1; }
 .staff-section, .staff-section * { color: #fff; }
