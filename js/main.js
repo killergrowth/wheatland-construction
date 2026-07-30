@@ -27,8 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
       link.addEventListener('click', function(e) {
         e.preventDefault();
         var img = this.querySelector('img');
-        var src = this.href || (img && img.src) || '';
-        lightboxImg.src = src.replace(/-\d+x\d+\./, '.').replace('-scaled', '');
+        lightboxImg.src = this.href || (img && img.src) || '';
         overlay.classList.add('active');
       });
     });
@@ -36,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.gallery-grid img:not(.gallery-item img), .gallery-lightbox').forEach(function(img) {
       img.addEventListener('click', function(e) {
         e.preventDefault();
-        lightboxImg.src = this.src.replace(/-\d+x\d+\./, '.').replace('-scaled', '');
+        lightboxImg.src = this.src;
         overlay.classList.add('active');
       });
     });
