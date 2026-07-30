@@ -78,3 +78,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Back to top
+(function(){
+  var btn = document.querySelector('.back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('visible', window.scrollY > 400);
+  });
+})();
