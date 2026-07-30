@@ -501,7 +501,7 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(240,238,235,0.82);
+  background: rgba(240,238,235,0.65);
   pointer-events: none;
 }
 .reviews-section .container { position: relative; z-index: 1; }
@@ -544,17 +544,17 @@ ul { list-style: none; }
 /* Carousel wrapper */
 .reviews-carousel-wrap {
   position: relative;
+  padding: 0 44px;
+  box-sizing: border-box;
 }
 .reviews-carousel {
   overflow: hidden;
   width: 100%;
-  padding: 0 44px;
-  box-sizing: border-box;
 }
 .reviews-track {
   display: flex;
   gap: 24px;
-  transition: transform 0.35s ease;
+  will-change: transform;
 }
 /* New review cards */
 .review-card-new {
@@ -615,6 +615,7 @@ ul { list-style: none; }
 }
 .rc-prev { left: 0; }
 .rc-next { right: 0; }
+.rc-clone { pointer-events: none; }
 .rc-arrow:hover { background: #efa92c; color: #fff; border-color: #efa92c; }
 .see-all-reviews { text-align: center; margin-top: 32px; }
 /* Responsive */
