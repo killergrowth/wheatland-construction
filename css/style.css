@@ -1010,7 +1010,7 @@ footer {
   .header-inner { padding: 8px 16px; align-items: center; }
   .header-logo { margin-bottom: 0; margin-top: 0; }
   .header-logo img { width: 80px; }
-  .header-cta { display: none; }
+  .header-cta { display: block; margin-top: 0; }
 
   /* Nav: no negative margin overlap, hamburger + logo side-by-side feel */
   .main-nav { margin-top: 0; padding: 0; }
