@@ -57,21 +57,97 @@ const reviewData  = fs.existsSync(reviewsFile)
 function buildReviewCards() {
   const reviews = (reviewData.reviews || []).slice(0, 8);
   if (!reviews.length) return '';
-  const cards = reviews.map(r => {
-    const text = escHtml(r.text || '');
-    return `<div class="review-card">
-  <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-  <p class="review-text">&#8220;${text}&#8221;</p>
-  <div class="review-author">${escHtml(r.author || '')}</div>
-  <div class="review-date">${escHtml(r.relativeTime || '')}</div>
+  const avatarColors = ['#c0392b','#2980b9','#27ae60','#8e44ad','#e67e22','#16a085','#d35400','#2c3e50'];
+  const cards = reviews.map((r, i) => {
+    const fullText = escHtml(r.text || '');
+    const truncated = r.text && r.text.length > 160 ? escHtml(r.text.slice(0, 160)) + '...' : fullText;
+    const initial = (r.author || '?')[0].toUpperCase();
+    const color = avatarColors[i % avatarColors.length];
+    // Format date from publishTime
+    let dateStr = escHtml(r.relativeTime || '');
+    if (r.publishTime) {
+      try {
+        const d = new Date(r.publishTime);
+        dateStr = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      } catch(e) {}
+    }
+    const hasMore = r.text && r.text.length > 160;
+    return `<div class="review-card-new">
+  <div class="rc-header">
+    <div class="rc-avatar" style="background:${color}">${initial}</div>
+    <div class="rc-meta">
+      <div class="rc-name">${escHtml(r.author || '')}</div>
+      <div class="rc-date">${dateStr}</div>
+    </div>
+    <div class="rc-google-badge"><svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.38 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-3.88-13.46-9.41l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></div>
+  </div>
+  <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="rc-verified">&#10003;</span></div>
+  <p class="rc-text">${truncated}${hasMore ? ` <a href="https://share.google/aUvlrJyK53Mqm1tAy" target="_blank" rel="noopener" class="rc-read-more">Read more</a>` : ''}</p>
 </div>`;
   }).join('\n');
-  return `<div class="reviews-grid">\n${cards}\n</div>`;
+  return `<div class="reviews-carousel-wrap">
+  <button class="rc-arrow rc-prev" aria-label="Previous" onclick="rcSlide(-1)">&#10094;</button>
+  <div class="reviews-carousel" id="reviews-carousel">
+    <div class="reviews-track" id="reviews-track">
+${cards}
+    </div>
+  </div>
+  <button class="rc-arrow rc-next" aria-label="Next" onclick="rcSlide(1)">&#10095;</button>
+</div>
+<script>
+(function(){
+  var track = document.getElementById('reviews-track');
+  var idx = 0;
+  var total = track ? track.children.length : 0;
+  function getVisible() { return window.innerWidth < 640 ? 1 : window.innerWidth < 900 ? 2 : 3; }
+  function update() {
+    var vis = getVisible();
+    var max = Math.max(0, total - vis);
+    if (idx > max) idx = max;
+    var cardW = track && track.children[0] ? track.children[0].offsetWidth + 24 : 0;
+    track.style.transform = 'translateX(-' + (idx * cardW) + 'px)';
+  }
+  window.rcSlide = function(dir) {
+    var vis = getVisible();
+    var max = Math.max(0, total - vis);
+    idx = Math.max(0, Math.min(idx + dir, max));
+    update();
+  };
+  function setCardWidths() {
+    var wrap = document.getElementById('reviews-carousel');
+    if (!wrap || !track || !track.children.length) return;
+    var vis = getVisible();
+    var gap = 24;
+    var available = wrap.offsetWidth;
+    var cardW = Math.floor((available - gap * (vis - 1)) / vis);
+    for (var j = 0; j < track.children.length; j++) {
+      track.children[j].style.flex = '0 0 ' + cardW + 'px';
+    }
+    update();
+  }
+  window.addEventListener('resize', setCardWidths);
+  // Run after layout
+  setTimeout(setCardWidths, 50);
+})();
+<\/script>`;
 }
 
 function buildRatingLine() {
   if (!reviewData.rating) return '';
-  return `<div class="reviews-rating-line"><strong>EXCELLENT</strong> &mdash; Based on <strong>${reviewData.userRatingCount || ''} reviews</strong> &mdash; Posted on Google</div>`;
+  const rating = reviewData.rating || 4.5;
+  const count = reviewData.userRatingCount || 0;
+  const fullStars = Math.floor(rating);
+  const halfStar = rating - fullStars >= 0.4;
+  let starsHtml = '';
+  for (let i = 0; i < fullStars; i++) starsHtml += '<span class="rs-star rs-full">&#9733;</span>';
+  if (halfStar) starsHtml += '<span class="rs-star rs-half">&#9733;</span>';
+  const googleSvg = `<svg width="80" height="26" viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg"><path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335"/><path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05"/><path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4"/><path d="M225 3v65h-9.5V3h9.5z" fill="#34A853"/><path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335"/><path d="M35.29 41.41V32h31.86c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 35.29.36 16.69 16.32 1.23 35.43 1.23c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65H35.29z" fill="#4285F4"/></svg>`;
+  return `<div class="reviews-summary-block">
+  <div class="rsb-excellent">EXCELLENT</div>
+  <div class="rsb-stars">${starsHtml}</div>
+  <div class="rsb-count">Based on <strong>${count} reviews</strong></div>
+  <div class="rsb-google">${googleSvg}</div>
+</div>`;
 }
 
 // ─── Blog: 3 most recent posts for homepage ───────────────────────────────────
