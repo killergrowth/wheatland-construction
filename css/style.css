@@ -504,7 +504,7 @@ ul { list-style: none; }
   background: rgba(240,238,235,0.65);
   pointer-events: none;
 }
-.reviews-section .container { position: relative; z-index: 1; }
+.reviews-section .container { position: relative; z-index: 1; overflow: hidden; }
 .reviews-section .section-title { font-size: 22px; line-height: 1.3; }
 .reviews-inner {
   display: flex;
@@ -518,6 +518,8 @@ ul { list-style: none; }
 .reviews-right {
   flex: 1;
   min-width: 0;
+  overflow: hidden;
+  max-width: 100%;
 }
 /* Rating summary block */
 .reviews-summary-block {
@@ -546,10 +548,13 @@ ul { list-style: none; }
   position: relative;
   padding: 0 44px;
   box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 }
 .reviews-carousel {
   overflow: hidden;
   width: 100%;
+  max-width: 100%;
 }
 .reviews-track {
   display: flex;
@@ -624,10 +629,10 @@ ul { list-style: none; }
   .reviews-left { flex: none; width: 100%; }
   .reviews-summary-block { align-items: center; text-align: center; }
   .rsb-stars { justify-content: center; }
-  .review-card-new { flex: 0 0 calc(50% - 12px); }
 }
-@media (max-width: 600px) {
-  .review-card-new { flex: 0 0 100%; }
+@media (max-width: 640px) {
+  .reviews-carousel-wrap { padding: 0 40px; }
+  .rc-arrow { width: 32px; height: 32px; font-size: 12px; }
 }
 
 /* ========== BLOG SECTION ========== */

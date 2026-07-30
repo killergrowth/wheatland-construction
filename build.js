@@ -86,153 +86,24 @@ function buildReviewCards() {
 </div>`;
   }).join('\n');
   return `<div class="reviews-carousel-wrap">
-  <button class="rc-arrow rc-prev" aria-label="Previous" onclick="rcSlide(-1)">&#10094;</button>
+  <button class="rc-arrow rc-prev" aria-label="Previous" id="rc-prev">&#10094;</button>
   <div class="reviews-carousel" id="reviews-carousel">
     <div class="reviews-track" id="reviews-track">
 ${cards}
     </div>
   </div>
-  <button class="rc-arrow rc-next" aria-label="Next" onclick="rcSlide(1)">&#10095;</button>
-</div>
-<script>
-(function(){
-  var carousel = document.getElementById('reviews-carousel');
-  var track = document.getElementById('reviews-track');
-  if (!carousel || !track) return;
-  var gap = 24;
-  var autoDelay = 4000;
-  var transitioning = false;
-  var autoTimer = null;
-
-  function getVisible() {
-    return window.innerWidth < 640 ? 1 : window.innerWidth < 900 ? 2 : 3;
-  }
-
-  function getCardWidth() {
-    return track.children.length ? track.children[0].offsetWidth + gap : 0;
-  }
-
-  // Clone cards for infinite loop
-  function setupClones() {
-    // Remove any existing clones
-    var existing = track.querySelectorAll('.rc-clone');
-    existing.forEach(function(el){ el.parentNode.removeChild(el); });
-    var vis = getVisible();
-    var originals = Array.from(track.children);
-    // Prepend last vis cards as clones
-    for (var i = originals.length - vis; i < originals.length; i++) {
-      var clone = originals[i].cloneNode(true);
-      clone.classList.add('rc-clone');
-      track.insertBefore(clone, track.firstChild);
-    }
-    // Append first vis cards as clones
-    for (var j = 0; j < vis; j++) {
-      var clone2 = originals[j].cloneNode(true);
-      clone2.classList.add('rc-clone');
-      track.appendChild(clone2);
-    }
-  }
-
-  var idx = 0; // logical index into originals
-
-  function setCardWidths() {
-    var vis = getVisible();
-    var available = carousel.clientWidth; // carousel has no padding, wrap has it
-    var cardW = Math.floor((available - gap * (vis - 1)) / vis);
-    if (cardW < 1) return;
-    var all = track.children;
-    for (var k = 0; k < all.length; k++) {
-      all[k].style.flex = '0 0 ' + cardW + 'px';
-      all[k].style.maxWidth = cardW + 'px';
-    }
-  }
-
-  function getOffset() {
-    var vis = getVisible();
-    // clones prepended = vis cards
-    return (idx + vis) * (getCardWidth());
-  }
-
-  function jump(noTransition) {
-    if (noTransition) track.style.transition = 'none';
-    track.style.transform = 'translateX(-' + getOffset() + 'px)';
-    if (noTransition) track.offsetHeight; // force reflow
-  }
-
-  function slideTo(newIdx, animate) {
-    if (transitioning && animate) return;
-    track.style.transition = animate ? 'transform 0.4s ease' : 'none';
-    idx = newIdx;
-    track.style.transform = 'translateX(-' + getOffset() + 'px)';
-  }
-
-  function origCount() {
-    return track.querySelectorAll('.review-card-new:not(.rc-clone)').length;
-  }
-
-  track.addEventListener('transitionend', function() {
-    transitioning = false;
-    var vis = getVisible();
-    var total = origCount();
-    if (idx >= total) {
-      idx = idx - total;
-      jump(true);
-    } else if (idx < 0) {
-      idx = idx + total;
-      jump(true);
-    }
-  });
-
-  window.rcSlide = function(dir) {
-    resetAuto();
-    transitioning = true;
-    slideTo(idx + dir, true);
-  };
-
-  function autoStep() {
-    transitioning = true;
-    slideTo(idx + 1, true);
-  }
-
-  function resetAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(autoStep, autoDelay);
-  }
-
-  function init() {
-    setupClones();
-    setCardWidths();
-    jump(true);
-    resetAuto();
-  }
-
-  window.addEventListener('resize', function() {
-    clearInterval(autoTimer);
-    setupClones();
-    setCardWidths();
-    jump(true);
-    resetAuto();
-  });
-
-  // Pause on hover
-  carousel.addEventListener('mouseenter', function(){ clearInterval(autoTimer); });
-  carousel.addEventListener('mouseleave', function(){ resetAuto(); });
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    setTimeout(init, 50);
-  }
-})();
-<\/script>`;
+  <button class="rc-arrow rc-next" aria-label="Next" id="rc-next">&#10095;</button>
+</div>`;
 }
 
 function buildRatingLine() {
   if (!reviewData.rating) return '';
   const rating = reviewData.rating || 4.5;
   const count = reviewData.userRatingCount || 0;
-  const fullStars = Math.floor(rating);
-  const halfStar = rating - fullStars >= 0.4;
+  // Round to nearest 0.5
+  const rounded = Math.round(rating * 2) / 2;
+  const fullStars = Math.floor(rounded);
+  const halfStar = rounded - fullStars >= 0.5;
   let starsHtml = '';
   for (let i = 0; i < fullStars; i++) starsHtml += '<span class="rs-star rs-full">&#9733;</span>';
   if (halfStar) starsHtml += '<span class="rs-star rs-half">&#9733;</span>';
