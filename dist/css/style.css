@@ -736,8 +736,8 @@ ul { list-style: none; }
   transition: background 0.2s;
 }
 .btn-cta-dark:hover { background: #333; color: #fff; }
-.cta-card .call-line { margin-top: 20px; font-size: 16px; color: #1e1e1e; font-weight: 600; }
-.cta-card .call-line a { color: #1e1e1e; font-weight: 800; font-size: 18px; text-decoration: none; }
+.cta-card .call-line { margin-top: 20px; font-size: 17px; color: #1e1e1e; font-weight: 600; }
+.cta-card .call-line a { color: #1e1e1e; font-weight: 800; font-size: 24px; text-decoration: none; }
 .cta-card .call-line a:hover { text-decoration: underline; }
 
 /* ========== FOOTER ========== */
