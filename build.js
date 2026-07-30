@@ -301,6 +301,15 @@ copyDir(path.join(ROOT, 'functions'),  path.join(DIST, 'functions'));
 copyDir(path.join(ROOT, 'data'),       path.join(DIST, 'data'));
 console.log('Assets copied.');
 
+// ─── Location Pages ─────────────────────────────────────────────────────────
+
+try {
+  const { buildAllLocationPages } = require('./build-location-pages');
+  buildAllLocationPages();
+} catch (e) {
+  console.log('[Location Pages] Skipped:', e.message);
+}
+
 // ─── Blog Build ───────────────────────────────────────────────────────────────
 
 const { buildBlog } = require('../../tools/kg-site-builder/lib/blog-build');
