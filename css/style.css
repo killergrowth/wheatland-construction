@@ -538,8 +538,21 @@ ul { list-style: none; }
 .rs-star {
   font-size: 26px;
   color: #efa92c;
+  display: inline-block;
 }
-.rs-half { opacity: 0.5; }
+.rs-half {
+  position: relative;
+  color: #ddd;
+}
+.rs-half::before {
+  content: '\2605';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  overflow: hidden;
+  color: #efa92c;
+}
 .rsb-count { font-size: 14px; color: #444; margin-top: 2px; }
 .rsb-count strong { color: #1a1a1a; }
 .rsb-google { margin-top: 8px; }
