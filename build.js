@@ -298,6 +298,7 @@ copyDir(path.join(ROOT, 'images'),     path.join(DIST, 'images'));
 copyDir(path.join(ROOT, 'css'),        path.join(DIST, 'css'));
 copyDir(path.join(ROOT, 'js'),         path.join(DIST, 'js'));
 copyDir(path.join(ROOT, 'functions'),  path.join(DIST, 'functions'));
+copyDir(path.join(ROOT, 'data'),       path.join(DIST, 'data'));
 console.log('Assets copied.');
 
 // ─── Blog Build ───────────────────────────────────────────────────────────────

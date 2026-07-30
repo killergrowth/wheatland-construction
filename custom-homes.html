@@ -44,14 +44,28 @@
 </section>
 
 <!-- TESTIMONIAL -->
-<section class="service-testimonial">
+<section class="service-testimonial" id="service-review-section">
   <div class="container" style="max-width:820px;">
     <hr class="testimonial-rule">
-    <blockquote class="service-testimonial-quote">&#8220;They were respectful and courteous throughout the entire process. They were also professional, caring and trustworthy. We are very happy with our house, and glad we chose Wheatland!&#8221;</blockquote>
-    <p class="service-testimonial-author">Steve J.</p>
+    <blockquote class="service-testimonial-quote" id="service-review-text">Loading review&hellip;</blockquote>
+    <p class="service-testimonial-author" id="service-review-author"></p>
     <hr class="testimonial-rule">
   </div>
 </section>
+<script>
+(function(){
+  fetch("/data/reviews.json")
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var reviews = (d.reviews || []).filter(function(r){ return r.text && r.text.length > 40; });
+      if(!reviews.length) return;
+      var r = reviews[Math.floor(Math.random() * reviews.length)];
+      document.getElementById("service-review-text").innerHTML = "\u201C" + r.text + "\u201D";
+      document.getElementById("service-review-author").textContent = r.author;
+    })
+    .catch(function(){});
+})();
+</script>
 
 <!-- CTA BAND -->
 <div class="cta-float-wrap">
