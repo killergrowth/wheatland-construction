@@ -8,14 +8,28 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Build deploy summary from commit
+      - name: Check commit message
+        id: check
+        run: |
+          MSG="${{ github.event.head_commit.message }}"
+          # Skip internal/tooling commits
+          if echo "$MSG" | grep -qiE '^(feat|fix|chore|ci|docs|refactor|test|style|build)\:'; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "Skipping internal commit: $MSG"
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build deploy summary
         id: summary
+        if: steps.check.outputs.skip == 'false'
         run: |
           MSG="${{ github.event.head_commit.message }}"
           CHANGED="${{ join(github.event.head_commit.modified, ', ') }}"
-          echo "summary=Deployed to production. Commit: ${MSG}${CHANGED:+ | Files: ${CHANGED}}" >> $GITHUB_OUTPUT
+          echo "summary=Deployed to production. ${MSG}${CHANGED:+ | Files: ${CHANGED}}" >> $GITHUB_OUTPUT
 
       - name: Dispatch to reporting repo
+        if: steps.check.outputs.skip == 'false'
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.KILLERGROWTH_REPO_TOKEN }}
