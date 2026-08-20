@@ -30,7 +30,7 @@ jobs:
         run: |
           if git diff --quiet data/reviews.json 2>/dev/null; then
             echo "changed=false" >> $GITHUB_OUTPUT
-            echo "No change — skipping deploy."
+            echo "No change — skipping commit."
           else
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
@@ -44,13 +44,7 @@ jobs:
           git commit -m "chore: refresh Google reviews [auto]"
           git push
 
-      - name: Build site
-        if: steps.diff.outputs.changed == 'true'
-        run: node build.js
-
-      - name: Deploy to Cloudflare Pages
-        if: steps.diff.outputs.changed == 'true'
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: 27cafbbee6f8e1db0d9499405d4755c1
-        run: npx wrangler pages deploy ./dist --project-name wheatland-construction --branch main
+      # NOTE: Deploy intentionally removed. Per KillerGrowth SOP-WEB-BUILD,
+      # all Cloudflare Pages deploys must be run manually via wrangler.
+      # Auto-deploys from GitHub Actions are banned. After reviews update,
+      # run: npx wrangler pages deploy ./dist --project-name wheatland-construction --branch staging

@@ -12,6 +12,11 @@ const PARTS  = path.join(ROOT, '_partials');
 const SITE_ID = 'wheatland-construction';
 const DOMAIN  = 'wheatlandconstruction.com';
 
+process.env.KG_SITES_JSON = process.env.KG_SITES_JSON ||
+  'C:\\Users\\KillerGrowth\\.openclaw\\workspace\\References\\sites.json';
+const { injectScripts, loadSiteScripts } = require('./inject-scripts');
+const siteScripts = loadSiteScripts(SITE_ID);
+
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 /** BOM-safe UTF-8 read */
@@ -24,7 +29,7 @@ function read(p) {
 function write(relPath, content) {
   const full = path.join(DIST, relPath);
   fs.mkdirSync(path.dirname(full), { recursive: true });
-  fs.writeFileSync(full, content, 'utf8');
+  fs.writeFileSync(full, injectScripts(content, siteScripts), 'utf8');
   console.log('Built: ' + relPath);
 }
 
@@ -336,6 +341,11 @@ copyDir(path.join(ROOT, 'css'),        path.join(DIST, 'css'));
 copyDir(path.join(ROOT, 'js'),         path.join(DIST, 'js'));
 copyDir(path.join(ROOT, 'functions'),  path.join(DIST, 'functions'));
 copyDir(path.join(ROOT, 'data'),       path.join(DIST, 'data'));
+// SOP required: copy robots.txt + CF worker crawler block files
+for (const f of ['robots.txt', '_worker.js', '_routes.json']) {
+  const src = path.join(ROOT, f);
+  if (fs.existsSync(src)) fs.copyFileSync(src, path.join(DIST, f));
+}
 console.log('Assets copied.');
 
 // ─── Location Pages ─────────────────────────────────────────────────────────
@@ -364,7 +374,7 @@ try {
 
 // ─── Blog Build ───────────────────────────────────────────────────────────────
 
-const { buildBlog } = require('../../tools/kg-site-builder/lib/blog-build');
+const { buildBlog } = require('./blog-build');
 buildBlog({
   srcDir:    ROOT,
   distDir:   DIST,
@@ -376,7 +386,7 @@ buildBlog({
 // ─── Sitemap ──────────────────────────────────────────────────────────────────
 
 try {
-  const { generateSitemap } = require('../../tools/kg-site-builder/lib/gen-sitemap');
+  const { generateSitemap } = require('./gen-sitemap');
   generateSitemap({ srcDir: ROOT, distDir: DIST, domain: DOMAIN });
 } catch (e) {
   console.log('[Sitemap] Skipped:', e.message);

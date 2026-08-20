@@ -1,0 +1,13 @@
+{
+  "name": "wheatland-construction",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Wheatland Construction static site",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^18.0.3"
+  }
+}
