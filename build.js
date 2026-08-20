@@ -226,7 +226,7 @@ function breadcrumbSchema(name, url) {
 
 // Homepage
 write('index.html', buildPage({
-  title:    'Wheatland Construction | Custom Homes, Additions & Remodels | El Dorado, KS',
+  title:    'Custom Home Builder Wichita, KS | Wheatland Construction',
   metaDesc: 'Family-owned construction in Butler & Sedgwick County, KS. Custom homes, additions, major remodels & roofing. Veterans Approved Builder. Call (316) 322-7898.',
   canonical: 'https://' + DOMAIN + '/',
   ogImage:  'https://' + DOMAIN + '/images/customhome-hero.jpg',
@@ -347,6 +347,21 @@ try {
   console.log('[Location Pages] Skipped:', e.message);
 }
 
+// City Pillar Pages
+try {
+  const { buildAllCityPillarPages } = require('./build-city-pillar-pages');
+  buildAllCityPillarPages();
+} catch (e) {
+  console.log('[City Pillars] Skipped:', e.message);
+}
+
+// Service Areas Hub
+try {
+  require('./build-service-areas');
+} catch (e) {
+  console.log('[Service Areas] Skipped:', e.message);
+}
+
 // ─── Blog Build ───────────────────────────────────────────────────────────────
 
 const { buildBlog } = require('../../tools/kg-site-builder/lib/blog-build');
@@ -361,8 +376,8 @@ buildBlog({
 // ─── Sitemap ──────────────────────────────────────────────────────────────────
 
 try {
-  const genSitemap = require('../../tools/kg-site-builder/lib/gen-sitemap');
-  genSitemap({ srcDir: ROOT, distDir: DIST, domain: DOMAIN });
+  const { generateSitemap } = require('../../tools/kg-site-builder/lib/gen-sitemap');
+  generateSitemap({ srcDir: ROOT, distDir: DIST, domain: DOMAIN });
 } catch (e) {
   console.log('[Sitemap] Skipped:', e.message);
 }

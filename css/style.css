@@ -258,6 +258,28 @@ ul { list-style: none; }
   font-size: clamp(1.1rem, 2.2vw, 1.35rem);
   letter-spacing: 2px;
 }
+.hero-cta-wrap {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-hero {
+  background: #efa92c;
+  color: #fff;
+  border: none;
+  padding: 15px 35px;
+  font-size: 18.75px;
+  border-radius: 6px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.625px;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-align: center;
+  display: inline-block;
+}
+.btn-hero:hover { background: #d4920e; color: #fff; }
 
 /* Page header (inner pages) */
 .page-header {

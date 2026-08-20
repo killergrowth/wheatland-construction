@@ -1,7 +1,7 @@
 ---
 slug: custom-home-building-timeline
 title: 'Custom Home Building Timeline: Everything You Need to Know'
-status: scheduled
+status: published
 publishDate: '2026-08-04'
 scheduledDate: '2026-08-04'
 excerpt: >-

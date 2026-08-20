@@ -8,8 +8,8 @@
 {{base_head}}
 <style>
 .blog-index-hero { background: #2a2a2a; padding: 48px 20px 36px; }
-.blog-index-hero .container { max-width: 1200px; margin: 0 auto; }
-.blog-index-hero nav { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
+.blog-index-hero .container { max-width: 1200px; margin: 0 auto; text-align: center; }
+.blog-index-hero nav { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 12px; text-align: center; }
 .blog-index-hero nav a { color: rgba(255,255,255,0.7); text-decoration: none; }
 .blog-index-hero nav a:hover { color: #efa92c; }
 .blog-index-hero h1 { color: #fff; font-family: 'Barlow', sans-serif; font-size: clamp(1.4rem, 3vw, 2.1rem); font-weight: 800; margin: 0; }
@@ -41,6 +41,16 @@
 <div class="blog-index-layout">
   {{posts_html}}
   {{pagination_html}}
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-float-wrap">
+  <div class="cta-card">
+    <h2>Let&#8217;s Work Together</h2>
+    <p>Ready to work with Wheatland Construction on your next project?<br>Tell us more about your project by clicking the button below, or give us a call.</p>
+    <a href="/project-request/" class="btn btn-cta-dark">Let&#8217;s Get Started</a>
+    <p class="call-line">Or Call: <a href="tel:+13163227898">(316) 322-7898</a></p>
+  </div>
 </div>
 
 {{footer}}

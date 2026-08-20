@@ -1,7 +1,7 @@
 ---
 slug: what-to-expect-building-custom-home
 title: 'What to Expect When Building a Custom Home: Everything You Need to Know'
-status: scheduled
+status: published
 publishDate: '2026-08-11'
 scheduledDate: '2026-08-11'
 excerpt: >-

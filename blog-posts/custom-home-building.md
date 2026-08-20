@@ -1,7 +1,7 @@
 ---
 slug: custom-home-building
 title: 'Custom Home Building: Everything You Need to Know'
-status: scheduled
+status: published
 publishDate: '2026-07-31'
 scheduledDate: '2026-07-31'
 excerpt: >-

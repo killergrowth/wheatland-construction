@@ -1,7 +1,7 @@
 ---
 slug: home-remodel-financing-options
 title: 'Home Remodel Financing Options: Everything You Need to Know'
-status: scheduled
+status: published
 publishDate: '2026-08-14'
 scheduledDate: '2026-08-14'
 excerpt: >-

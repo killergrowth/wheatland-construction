@@ -1,7 +1,7 @@
 ---
 slug: custom-home-building-checklist
 title: 'Custom Home Building Checklist: Everything You Need to Know'
-status: scheduled
+status: published
 publishDate: '2026-08-18'
 scheduledDate: '2026-08-18'
 excerpt: >-

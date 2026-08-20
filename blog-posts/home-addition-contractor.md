@@ -1,7 +1,7 @@
 ---
 slug: home-addition-contractor
 title: 'Home Addition Contractor Near Me — Wheatland Construction in Wichita, KS'
-status: scheduled
+status: published
 publishDate: '2026-08-07'
 scheduledDate: '2026-08-07'
 excerpt: >-

@@ -13,10 +13,18 @@
 <section class="section-padding" style="background:#f8f9fa;">
   <div class="container">
     <div style="max-width:720px;margin:0 auto;background:#fff;border-radius:8px;padding:48px 40px;box-shadow:0 2px 16px rgba(0,0,0,0.07);">
-      <h2 style="font-family:'Barlow',sans-serif;font-size:1.5rem;font-weight:800;color:#2a2a2a;margin-bottom:8px;">Project Request</h2>
-      <p style="color:#666;margin-bottom:32px;line-height:1.7;">To help us better understand your specific project, fill out the request form below. A member of our team will evaluate your request and reach out to set up a consultation. If you would rather talk with us, feel free to call at <a href="tel:+13163227898" style="color:#efa92c;font-weight:600;">(316) 322-7898</a>.</p>
+      <h2 id="pr-intro-heading" style="font-family:'Barlow',sans-serif;font-size:1.5rem;font-weight:800;color:#2a2a2a;margin-bottom:8px;">Project Request</h2>
+      <p id="pr-intro-text" style="color:#666;margin-bottom:32px;line-height:1.7;">To help us better understand your specific project, fill out the request form below. A member of our team will evaluate your request and reach out to set up a consultation. If you would rather talk with us, feel free to call at <a href="tel:+13163227898" style="color:#efa92c;font-weight:600;">(316) 322-7898</a>.</p>
 
-      <form action="/project-request/submit/" method="POST" class="project-form">
+      <!-- Thank You State (shown after ?sent=1 redirect) -->
+      <div id="pr-thankyou" style="display:none;text-align:center;padding:24px 0 8px;">
+        <div style="font-size:3rem;margin-bottom:16px;">✅</div>
+        <h2 style="font-family:'Barlow',sans-serif;font-size:1.6rem;font-weight:800;color:#2a2a2a;margin-bottom:12px;">Got it &mdash; thank you!</h2>
+        <p style="color:#555;font-size:1.05rem;line-height:1.7;margin-bottom:8px;">Your project request has been received. A member of the Wheatland Construction team will review it and reach out to set up a consultation.</p>
+        <p style="color:#555;font-size:1rem;line-height:1.7;">In the meantime, feel free to call us at <a href="tel:+13163227898" style="color:#efa92c;font-weight:600;">(316) 322-7898</a>.</p>
+      </div>
+
+      <form id="pr-form" action="/project-request/submit/" method="POST" class="project-form">
 
         <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
           <div class="form-group">
@@ -133,3 +141,20 @@
 }
 .project-form textarea { resize: vertical; }
 </style>
+
+<script>
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('sent') === '1') {
+      var form = document.getElementById('pr-form');
+      var thanks = document.getElementById('pr-thankyou');
+      var intro = form ? form.previousElementSibling : null;
+      if (form) form.style.display = 'none';
+      if (thanks) thanks.style.display = 'block';
+      var introH = document.getElementById('pr-intro-heading');
+      var introP = document.getElementById('pr-intro-text');
+      if (introH) introH.style.display = 'none';
+      if (introP) introP.style.display = 'none';
+    }
+  })();
+</script>
