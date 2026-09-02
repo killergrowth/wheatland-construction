@@ -1,7 +1,7 @@
 ---
 slug: custom-home-building-companies
 title: 'Custom Home Building Companies: Everything You Need to Know'
-status: scheduled
+status: published
 publishDate: '2026-09-01'
 scheduledDate: '2026-09-01'
 excerpt: >-

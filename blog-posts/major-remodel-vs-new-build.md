@@ -1,7 +1,7 @@
 ---
 slug: major-remodel-vs-new-build
 title: 'Major Remodel vs New Build: Which Is Right for Your Home?'
-status: scheduled
+status: published
 publishDate: '2026-08-28'
 scheduledDate: '2026-08-28'
 excerpt: >-

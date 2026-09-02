@@ -1,7 +1,7 @@
 ---
 slug: home-additions-ideas
 title: 'Home Additions Ideas: Everything You Need to Know'
-status: scheduled
+status: published
 publishDate: '2026-08-25'
 scheduledDate: '2026-08-25'
 excerpt: >-

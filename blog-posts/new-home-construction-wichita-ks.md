@@ -1,7 +1,7 @@
 ---
 slug: new-home-construction-wichita-ks
 title: 'New Home Construction in Wichita, KS — Build the Home You Actually Want'
-status: scheduled
+status: published
 publishDate: '2026-08-21'
 scheduledDate: '2026-08-21'
 excerpt: >-

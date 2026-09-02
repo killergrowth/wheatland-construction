@@ -1,6 +1,6 @@
 'use strict';
 /**
- * build.js — Wheatland Construction
+ * build.js â€” Wheatland Construction
  * Builds static HTML site into ./dist/
  */
 const fs   = require('fs');
@@ -17,7 +17,7 @@ process.env.KG_SITES_JSON = process.env.KG_SITES_JSON ||
 const { injectScripts, loadSiteScripts } = require('./inject-scripts');
 const siteScripts = loadSiteScripts(SITE_ID);
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /** BOM-safe UTF-8 read */
 function read(p) {
@@ -47,12 +47,12 @@ function escHtml(s) {
   return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// ─── Partials ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Partials â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const header = read(path.join(PARTS, 'header.html'));
 const footer = read(path.join(PARTS, 'footer.html'));
 
-// ─── Reviews Data ────────────────────────────────────────────────────────────
+// â”€â”€â”€ Reviews Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const reviewsFile = path.join(ROOT, 'data', 'reviews.json');
 const reviewData  = fs.existsSync(reviewsFile)
@@ -121,7 +121,7 @@ function buildRatingLine() {
 </div>`;
 }
 
-// ─── Blog: 3 most recent posts for homepage ───────────────────────────────────
+// â”€â”€â”€ Blog: 3 most recent posts for homepage â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function buildBlogCards3() {
   const indexPath = path.join(ROOT, 'blog-posts', 'blog-index.json');
@@ -146,7 +146,7 @@ function buildBlogCards3() {
   }).join('\n');
 }
 
-// ─── Page Builder ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ Page Builder â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function buildPage(opts) {
   const { title, metaDesc, canonical, ogImage, schema, content } = opts;
@@ -179,7 +179,7 @@ function buildPage(opts) {
   return head + '\n' + body + '\n' + footer;
 }
 
-// ─── Schemas ──────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Schemas â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -227,7 +227,7 @@ function breadcrumbSchema(name, url) {
   });
 }
 
-// ─── Build Pages ──────────────────────────────────────────────────────────────
+// â”€â”€â”€ Build Pages â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 // Homepage
 write('index.html', buildPage({
@@ -239,7 +239,7 @@ write('index.html', buildPage({
   content:  read(path.join(ROOT, 'index.html'))
 }));
 
-// ─── Service Cities List (for areas-served sections) ────────────────────────────────────────
+// â”€â”€â”€ Service Cities List (for areas-served sections) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const TARGET_CITIES = [
   { name: 'Wichita',       slug: 'wichita-ks' },
@@ -334,7 +334,7 @@ write('project-request/index.html', buildPage({
   content:  read(path.join(ROOT, 'project-request.html'))
 }));
 
-// ─── Copy Assets ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ Copy Assets â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 copyDir(path.join(ROOT, 'images'),     path.join(DIST, 'images'));
 copyDir(path.join(ROOT, 'css'),        path.join(DIST, 'css'));
@@ -348,7 +348,7 @@ for (const f of ['robots.txt', '_worker.js', '_routes.json']) {
 }
 console.log('Assets copied.');
 
-// ─── Location Pages ─────────────────────────────────────────────────────────
+// â”€â”€â”€ Location Pages â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 try {
   const { buildAllLocationPages } = require('./build-location-pages');
@@ -372,7 +372,7 @@ try {
   console.log('[Service Areas] Skipped:', e.message);
 }
 
-// ─── Blog Build ───────────────────────────────────────────────────────────────
+// â”€â”€â”€ Blog Build â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const { buildBlog } = require('./blog-build');
 buildBlog({
@@ -383,7 +383,7 @@ buildBlog({
   siteName:  'Wheatland Construction'
 });
 
-// ─── Sitemap ──────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Sitemap â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 try {
   const { generateSitemap } = require('./gen-sitemap');
@@ -392,4 +392,4 @@ try {
   console.log('[Sitemap] Skipped:', e.message);
 }
 
-console.log('\n✓ Build complete → dist/');
+console.log('\nâœ“ Build complete â†’ dist/');
