@@ -30,6 +30,27 @@ Write-Host "`n[3/4] Pushing to GitHub ($Branch)..." -ForegroundColor Cyan
 git push origin $Branch
 if ($LASTEXITCODE -ne 0) { Write-Error "Git push failed. Deploy aborted."; exit 1 }
 
+Write-Host "`n[3.5/4] Validating dist/ before deploy..." -ForegroundColor Cyan
+# HARD GUARD: dist/index.html must start with <!DOCTYPE to prove a real build ran.
+# If it starts with <!-- HEADER --> or anything else, the build was skipped or corrupted.
+$distIndex = Join-Path $SiteRoot "dist\index.html"
+if (-not (Test-Path $distIndex)) {
+  Write-Error "DEPLOY BLOCKED: dist/index.html does not exist. Run node build.js first."
+  exit 1
+}
+$firstLine = (Get-Content $distIndex -TotalCount 1).Trim()
+if ($firstLine -notmatch '^<!DOCTYPE') {
+  Write-Error "DEPLOY BLOCKED: dist/index.html does not start with <!DOCTYPE. Got: '$firstLine'. This means the build was skipped or dist/ is corrupted. Run node build.js and try again."
+  exit 1
+}
+# Also verify CSS exists in dist/
+$distCss = Join-Path $SiteRoot "dist\css\style.css"
+if (-not (Test-Path $distCss)) {
+  Write-Error "DEPLOY BLOCKED: dist/css/style.css is missing. Run node build.js first."
+  exit 1
+}
+Write-Host "   dist/index.html validated (starts with <!DOCTYPE). CSS present. Safe to deploy." -ForegroundColor Green
+
 Write-Host "`n[4/4] Deploying to Cloudflare Pages ($Branch)..." -ForegroundColor Cyan
 $credPath = "C:\Users\KillerGrowth\.openclaw\workspace\References\credentials.md"
 $token = (Select-String -Path $credPath -Pattern "cfut_[A-Za-z0-9_]+" | Select-Object -First 1).Matches[0].Value
