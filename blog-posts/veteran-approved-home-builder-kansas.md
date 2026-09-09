@@ -1,7 +1,7 @@
 ---
 slug: veteran-approved-home-builder-kansas
 title: Veteran Approved Home Builder Kansas | Wheatland Construction
-status: scheduled
+status: published
 publishDate: '2026-09-04'
 scheduledDate: '2026-09-04'
 excerpt: >-

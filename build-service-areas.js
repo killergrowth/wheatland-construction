@@ -2,7 +2,7 @@
 /**
  * build-service-areas.js — Wheatland Construction
  * Builds /service-areas/index.html — city hub page listing all cities × services
- * Structure mirrors Timnath Painting's areas-served page, using Wheatland CSS.
+ * Structure mirrors Keystone Painting's areas-served page, using Wheatland CSS.
  */
 
 const fs   = require('fs');

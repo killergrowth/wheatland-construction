@@ -1,7 +1,7 @@
 ---
 slug: custom-home-builder-wichita-ks
 title: Custom Home Builder Wichita KS | Wheatland Construction
-status: scheduled
+status: published
 publishDate: '2026-09-08'
 scheduledDate: '2026-09-08'
 excerpt: >-
