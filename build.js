@@ -12,6 +12,16 @@ const PARTS  = path.join(ROOT, '_partials');
 const SITE_ID = 'wheatland-construction';
 const DOMAIN  = 'wheatlandconstruction.com';
 
+// ─── Clean dist/ before every build ─────────────────────────────────────────
+// Wipe and recreate dist/ so stale files never make it into a deploy.
+// This is the permanent fix for the recurring CSS-break bug caused by deploying
+// dist/ that was out of sync with source (e.g. after blog-only partial runs).
+if (fs.existsSync(DIST)) {
+  fs.rmSync(DIST, { recursive: true, force: true });
+}
+fs.mkdirSync(DIST, { recursive: true });
+console.log('dist/ wiped and recreated.');
+
 process.env.KG_SITES_JSON = process.env.KG_SITES_JSON ||
   'C:\\Users\\KillerGrowth\\.openclaw\\workspace\\References\\sites.json';
 const { injectScripts, loadSiteScripts } = require('./inject-scripts');
