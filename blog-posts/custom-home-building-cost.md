@@ -1,7 +1,7 @@
 ---
 slug: custom-home-building-cost
 title: 'Custom Home Building Cost: What to Expect in 2026'
-status: scheduled
+status: published
 publishDate: '2026-09-11'
 scheduledDate: '2026-09-11'
 excerpt: >-
