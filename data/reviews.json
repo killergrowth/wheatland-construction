@@ -1,7 +1,7 @@
 {
   "rating": 4.6,
   "userRatingCount": 41,
-  "fetchedAt": "2026-09-13T14:08:08.734Z",
+  "fetchedAt": "2026-09-16T13:48:51.688Z",
   "reviews": [
     {
       "author": "Amy Buchanan",
@@ -9,6 +9,13 @@
       "relativeTime": "a year ago",
       "text": "We used Wheatland Construction for our kitchen remodel, installation of new front door and replacement of an iron rail with a wall by our basement stairs. They were excellent in communicating and always made sure we knew when deliveries would take place. Carl and James were always so kind and easy to work with. We highly recommend them and will use them again when we have our bathrooms remodeled. (Cabinets were painted by a different contractor and floors were done by Jabaras)",
       "publishTime": "2025-08-10T03:05:45.977699827Z"
+    },
+    {
+      "author": "Linda Highbarger",
+      "rating": 5,
+      "relativeTime": "2 weeks ago",
+      "text": "Wheatland Construction was hired to do a remodel of my basement after considerable water damage from a sump pump failure and subsequent remediation completion. As the remodel process began it was determined there were still water problems from long-time cracks in the basement walls. Thus, extensive foundation repair was required with foundation beams, new guttering, and dirt grading around the house. Now that we are about 3 weeks from finishing the basement I am very pleased with their work and their progress. Jonathan, Carl and James have been great to work with: to communicate with me, to explain all the required/suggested steps and to provide great subcontractors. Thank you.",
+      "publishTime": "2026-08-28T00:32:42.945995729Z"
     },
     {
       "author": "Ronald Thompson",
@@ -30,13 +37,6 @@
       "relativeTime": "4 years ago",
       "text": "It was great working with the guys at Wheatland to build our house. They were respectful and courteous throughout the entire process, even when there were snags in materials and personnel due to covid. They were also professional, caring and trustworthy. We are very happy with our house, and glad we chose Wheatland.",
       "publishTime": "2022-02-09T14:02:13.991361Z"
-    },
-    {
-      "author": "Karen",
-      "rating": 5,
-      "relativeTime": "a year ago",
-      "text": "Wheatland Construction came in to a horrendous mess left by someone else and left me my home again. The guys were very polite and professional, did more work in approximately 2-3 months than had been done in over 2 years. I have received numerous compliments on the work they have done. I am extremely happy with the results I have gotten and be using them for all my future projects!",
-      "publishTime": "2025-05-21T20:47:05.745575Z"
     }
   ]
 }
