@@ -1,9 +1,9 @@
 ---
 slug: home-renovation-contractor-wichita-ks
 title: Home Renovation Contractor Wichita KS | Wheatland Construction
-status: scheduled
+status: published
 publishDate: '2026-09-15'
-scheduledDate: '2026-09-15'
+scheduledDate: null
 excerpt: >-
   Looking for a trusted home renovation contractor in Wichita, KS? Wheatland
   Construction delivers major remodels built to last.

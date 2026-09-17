@@ -1526,9 +1526,9 @@
     {
       "slug": "home-renovation-contractor-wichita-ks",
       "title": "Home Renovation Contractor Wichita KS | Wheatland Construction",
-      "status": "scheduled",
+      "status": "published",
       "publishDate": "2026-09-15",
-      "scheduledDate": "2026-09-15",
+      "scheduledDate": null,
       "excerpt": "Looking for a trusted home renovation contractor in Wichita, KS? Wheatland Construction delivers major remodels built to last.",
       "featuredImage": "blog-posts/images/home-renovation-contractor-wichita-ks.jpg",
       "inlineImage1": null,
@@ -1548,7 +1548,7 @@
       "sheetId": "1vbAvFozBVBuLll38MuHoDJE9fA1iaJYoON1Xz08J4p0",
       "sheetGid": "1165517984",
       "createdAt": "2026-07-14T23:51:31.981Z",
-      "updatedAt": "2026-07-14T23:51:31.981Z",
+      "updatedAt": "2026-09-16T14:21:16.436Z",
       "gbpGenerated": true
     },
     {
