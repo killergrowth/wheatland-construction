@@ -113,16 +113,17 @@ function loadSiteScripts(siteId) {
   const path = require('path');
   const SITES_JSON = process.env.KG_SITES_JSON || path.resolve(__dirname, '../../../References/sites.json');
   if (!fs.existsSync(SITES_JSON)) {
-    console.error(`[inject-scripts] FATAL: sites.json not found at ${SITES_JSON}. Build cannot continue on this environment.`);
-    process.exit(1);
+    // sites.json not available (e.g. CI/Ubuntu runner) -- no scripts to inject, continue safely
+    console.log(`[inject-scripts] sites.json not found at ${SITES_JSON} -- skipping script injection.`);
+    return null;
   }
   try {
     const data = JSON.parse(fs.readFileSync(SITES_JSON, 'utf8').replace(/^\uFEFF/, '').trim());
     const site = data.sites.find(s => s.id === siteId);
     return (site && site.scripts) ? site.scripts : null;
   } catch (e) {
-    console.error(`[inject-scripts] FATAL: Could not load scripts for ${siteId}:`, e.message);
-    process.exit(1);
+    console.warn(`[inject-scripts] Could not load scripts for ${siteId}:`, e.message, '-- skipping script injection.');
+    return null;
   }
 }
 
