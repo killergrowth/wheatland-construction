@@ -44,6 +44,10 @@ jobs:
           git commit -m "chore: refresh Google reviews [auto]"
           git push
 
+      - name: Install dependencies
+        if: steps.diff.outputs.changed == 'true'
+        run: npm install
+
       - name: Build site
         if: steps.diff.outputs.changed == 'true'
         run: node build.js
