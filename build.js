@@ -23,7 +23,7 @@ fs.mkdirSync(DIST, { recursive: true });
 console.log('dist/ wiped and recreated.');
 
 process.env.KG_SITES_JSON = process.env.KG_SITES_JSON ||
-  'C:\\Users\\KillerGrowth\\.openclaw\\workspace\\References\\sites.json';
+  path.resolve(__dirname, 'References/sites.json');
 const { injectScripts, loadSiteScripts } = require('./inject-scripts');
 const siteScripts = loadSiteScripts(SITE_ID);
 
