@@ -1,7 +1,7 @@
 ---
 slug: affordable-home-additions
 title: 'Affordable Home Additions: Everything You Need to Know'
-status: scheduled
+status: published
 publishDate: '2026-09-22'
 scheduledDate: '2026-09-22'
 excerpt: >-

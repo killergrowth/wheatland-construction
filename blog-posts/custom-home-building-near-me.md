@@ -1,7 +1,7 @@
 ---
 slug: custom-home-building-near-me
 title: Custom Home Building Near Me | Wheatland Construction
-status: scheduled
+status: published
 publishDate: '2026-09-18'
 scheduledDate: '2026-09-18'
 excerpt: >-
