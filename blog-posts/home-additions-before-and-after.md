@@ -1,7 +1,7 @@
 ---
 slug: home-additions-before-and-after
 title: 'Home Additions Before and After: Everything You Need to Know'
-status: scheduled
+status: published
 publishDate: '2026-09-25'
 scheduledDate: '2026-09-25'
 excerpt: >-
