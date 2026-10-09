@@ -7,8 +7,8 @@ scheduledDate: '2026-10-27'
 excerpt: >-
   Thinking about a home addition in Wichita? Here's what actually affects cost,
   timeline, and permits before you start.
-featuredImage: blog-posts/images/home-additions-wichita-ks.jpg
-inlineImage1: null
+featuredImage: null
+inlineImage1: blog-posts/images/home-additions-wichita-ks-inline1.jpg
 inlineImage2: null
 imagePrompt: >-
   I need an image of two construction workers in workwear framing a new exterior
