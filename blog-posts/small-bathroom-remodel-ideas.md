@@ -7,7 +7,7 @@ scheduledDate: '2026-11-10'
 excerpt: >-
   Working with a small bathroom? See the layout tricks, material choices, and
   budget tips that actually make a tight Wichita bathroom feel bigger.
-featuredImage: blog-posts/images/small-bathroom-remodel-ideas.jpg
+featuredImage: null
 inlineImage1: null
 inlineImage2: null
 imagePrompt: >-

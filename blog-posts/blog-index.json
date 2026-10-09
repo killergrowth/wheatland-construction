@@ -1751,7 +1751,7 @@
       "scheduledDate": "2026-10-27",
       "excerpt": "Thinking about a home addition in Wichita? Here's what actually affects cost, timeline, and permits before you start.",
       "featuredImage": "blog-posts/images/home-additions-wichita-ks.jpg",
-      "inlineImage1": "blog-posts/images/home-additions-wichita-ks-inline1.jpg",
+      "inlineImage1": null,
       "inlineImage2": null,
       "imagePrompt": "I need an image of two construction workers in workwear framing a new exterior wall addition on the side of a residential home, one securing a stud with a nail gun while the other holds the next board in place, visible house wrap and lumber framing against the existing brick exterior, natural daylight, candid action shot, photorealistic photograph, shot on a DSLR, documentary style, no text, no logos.",
       "imagePrompt2": "I need an image of a split before-and-after composition of a home's side exterior, one half showing a plain unfinished wall with no addition, the other half showing a completed room addition with matching siding and windows, natural daylight, no text labels, photorealistic photograph, shallow depth of field.",
@@ -1768,7 +1768,7 @@
       "sheetId": "1vbAvFozBVBuLll38MuHoDJE9fA1iaJYoON1Xz08J4p0",
       "sheetGid": "1165517984",
       "createdAt": "2026-10-09T20:14:45.984Z",
-      "updatedAt": "2026-10-09T20:55:13.814Z"
+      "updatedAt": "2026-10-09T21:02:37.678Z"
     },
     {
       "slug": "custom-home-builders",
@@ -1858,7 +1858,7 @@
       "publishDate": "2026-11-10",
       "scheduledDate": "2026-11-10",
       "excerpt": "Working with a small bathroom? See the layout tricks, material choices, and budget tips that actually make a tight Wichita bathroom feel bigger.",
-      "featuredImage": "blog-posts/images/small-bathroom-remodel-ideas.jpg",
+      "featuredImage": null,
       "inlineImage1": null,
       "inlineImage2": null,
       "imagePrompt": "I need an image of a homeowner standing in a small, newly remodeled bathroom running a hand along a floating vanity countertop, soft natural light from a frosted window, large-format tile visible on the shower wall behind them, relaxed and satisfied posture, photorealistic photograph, shot on a DSLR, documentary style, no text, no logos.",
@@ -1876,7 +1876,7 @@
       "sheetId": "1vbAvFozBVBuLll38MuHoDJE9fA1iaJYoON1Xz08J4p0",
       "sheetGid": "1165517984",
       "createdAt": "2026-10-09T20:18:54.718Z",
-      "updatedAt": "2026-10-09T20:18:54.718Z"
+      "updatedAt": "2026-10-09T21:05:01.848Z"
     },
     {
       "slug": "basement-flooring",
